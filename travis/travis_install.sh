@@ -2,7 +2,11 @@
 
 set -x
 
-sudo apt-get install libgmp10
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' libgmp10 | grep "install ok installed")
+if [ x == x"$PKG_OK" ]; then
+    echo "GMP library is not installed"
+    exit 1
+fi
 
 install_from_pypi() {
 	if [ "$2" = "latest" ]; then

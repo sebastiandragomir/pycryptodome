@@ -1,6 +1,6 @@
 language: python
 dist: trusty
-sudo: required
+sudo: false
 python:
  - "2.6"
  - "2.7"
@@ -23,8 +23,10 @@ matrix:
  include:
  - python: 3.4
    env: CFFI=no OLDPY=python3.2
+   sudo: required
  - python: 3.4
    env: CFFI=yes OLDPY=python3.2
+   sudo: required
  - os: osx
    language: generic
    install: pip2 install cibuildwheel==0.7.0
